@@ -10,6 +10,7 @@ class Interface:
         master.title("Foodscanner")
         master.geometry('560x380')
         master.resizable(False, False)
+        recipeslist = {}
 
         # Labels GUI
         label_ingredient = Label(master, text="Ingredient 3", font=("arial", 10, "bold"))
@@ -58,7 +59,7 @@ class Interface:
                 listbox_recipes.insert(y, i)
                 y += 1
 
-            return my_result
+            recipeslist.update(my_result)
 
         def adding():  # allows user to add an ingredient to the list
             listbox_overview.insert(END, temp.get())
@@ -72,7 +73,8 @@ class Interface:
             listbox_overview.delete(ANCHOR)
 
         def open_recipe():  # opens the selected recipe
-            webbrowser.open("google.com", new=0, autoraise=True)
+            recipe = str(listbox_recipes.get(ANCHOR))
+            webbrowser.open(recipeslist[recipe], new=0, autoraise=True)
 
         # Buttons GUI
         button_add = Button(master, text="add ingredient", command=adding)
