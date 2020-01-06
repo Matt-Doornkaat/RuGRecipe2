@@ -18,7 +18,7 @@ for x in range (0,100):
         recipe_href = i.find("a").attrs["href"]
         recipe_urls.append(recipe_href)
     page_number += 1
-    if page_number > 2: #a universal if break system would be nice here, in case the website expands
+    if page_number > 20: #a universal if break system would be nice here, in case the website expands
         break
 #print(recipe_urls)
 
@@ -51,5 +51,5 @@ recepten_lijst = pd.DataFrame(
      'Ingredienten': ingredients,
      'Website URLS': recipe_urls
     })
-recepten_lijst.to_csv("recepten.csv")
+recepten_lijst.to_csv("recipes2.csv")
 print(recepten_lijst)
