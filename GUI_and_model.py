@@ -8,7 +8,7 @@ class Interface:
     def __init__(self, master):
         self.master = master
         master.title("Foodscanner")
-        master.geometry('560x380')
+        master.geometry('800x380')
         master.resizable(False, False)
         recipeslist = {}
 
@@ -19,9 +19,10 @@ class Interface:
 
         # Listbox GUI
         listbox_overview = Listbox(master, width=40, height=15, selectmode='single')
-        listbox_recipes = Listbox(master, width=43, height=15, selectmode='single')
+        listbox_recipes = Listbox(master, width=80, height=15, selectmode='single')
 
         def launch(database="recipes.csv"):  # looks for scraped recipe and retrieves best option
+            listbox_recipes.delete(0, ANCHOR)
             file = open(database)
             recipes_df = pd.read_csv(file, header=[0])
 
